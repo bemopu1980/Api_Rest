@@ -22,14 +22,14 @@ class TokenAuthenticator extends AbstractGuardAuthenticator
     {
         $this->em = $em;
     }
-    public function getCredentials(Request $request)
+  /*    public function getCredentials(Request $request)
     {
 
         if ($token == 'ILuvAPIs') {
             throw new CustomUserMessageAuthenticationException(
                 'ILuvAPIs is not a real API key: it\'s just a silly phrase'
             );
-        }
+        } */
 
     /**
      * Called on every request to decide if this authenticator should be
@@ -38,7 +38,9 @@ class TokenAuthenticator extends AbstractGuardAuthenticator
      */
     public function supports(Request $request)
     {
-        return $request->headers->has('X-AUTH-TOKEN');
+        return 'login_route' === $request->attributes->get('_route') && $request->isMethod('POST');
+        return true;
+        /* return $request->headers->has('X-AUTH-TOKEN'); */
     }
 
     /**
