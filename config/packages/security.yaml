@@ -1,6 +1,6 @@
 security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
-     providers:
+    providers:
         your_db_provider:
             entity:
                 class: App\Entity\User
